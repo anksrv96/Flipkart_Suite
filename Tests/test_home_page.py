@@ -34,3 +34,10 @@ class TestHomePage(BaseTest):
         flag = home_page.get_visibility_of_fashion_section()
         assert flag
 
+    def test_search_performance(self):
+        self.login_page = LoginPage(self.driver)
+        home_page = self.login_page.perform_login_(TestData.USERNAME, TestData.PASSWORD)
+        home_page.populate_search_bar(TestData.SEARCH_QUERY)
+        home_page.click_search_button()
+
+

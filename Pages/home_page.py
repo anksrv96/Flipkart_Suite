@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 
 from Pages.base_page import BasePage
+from Pages.search_page import SearchPage
 
 
 class HomePage(BasePage):
@@ -8,7 +9,8 @@ class HomePage(BasePage):
     SEARCH_BAR = (By.XPATH, "//*[@id='container']/div/div[1]/div[1]/div[2]/div[2]/form/div/div/input")
     SEARCH_BUTTON = (By.XPATH, "//button[@class='L0Z3Pu']")
     GROCERY_BUTTON = (By.XPATH, "//*[@id='container']/div/div[2]/div/div/div[2]/a")
-    FASHION_SECTION = (By.XPATH, "")
+    FASHION_SECTION = (By.XPATH, "//*[@id='container']/div/div[2]/div/div/div[4]/a/div[1]")
+    CART_BUTTON = (By.XPATH, "//*[@id='container']/div/div[1]/div[1]/div[2]/div[6]/div/div/a")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -27,4 +29,13 @@ class HomePage(BasePage):
 
     def get_visibility_of_fashion_section(self):
         return self.is_visible(self.FASHION_SECTION)
-    
+
+    def populate_search_bar(self, query):
+        self.do_send_keys(self.SEARCH_BAR, query)
+
+    def click_search_button(self):
+        self.do_click(self.SEARCH_BUTTON)
+
+    def click_search_button(self):
+        self.do_click(self.CART_BUTTON)
+        return SearchPage(self.driver)

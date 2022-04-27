@@ -10,3 +10,5 @@ class TestData:
     PASSWORD = keyring.get_password(SERVICE_ID, USERNAME)
 
     LOGIN_PAGE_HEADER = "Login"
+
+    SEARCH_QUERY = "Besan"

@@ -18,7 +18,9 @@ class LoginPage(BasePage):
     """Class Constructor"""
     def __init__(self, driver):
         super().__init__(driver)
+        self.driver.delete_all_cookies()
         self.driver.get(TestData.BASE_URL)
+
         # WebDriverWait(self.driver, 10).until(expected_conditions.presence_of_element_located(self.HEADER))
 
     """Page Actions"""

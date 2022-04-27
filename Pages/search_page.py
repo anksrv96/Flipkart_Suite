@@ -8,7 +8,7 @@ from Pages.base_page import BasePage
 class SearchPage(BasePage):
     BRAND_SECTION =(By.XPATH, "//*[@id='container']/div/div[3]/div[1]/div[1]/div/div/div/section[4]")
     HALDIRAM_CHECKBOX = (By.XPATH, "//*[@id='container']/div/div[3]/div[1]/div[1]/div/div/div/section[4]/div[2]/div[1]/div[2]/div/label/input")
-    PRODUCT_ANCHORS = [(By.XPATH, "//a[@class='s1Q9rs']")]
+    PRODUCT_ANCHORS = [(By.XPATH, "//*[@id='container']/div/div[3]/div[1]/div[2]/div[2]/div/div)")]
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -28,13 +28,10 @@ class SearchPage(BasePage):
     def get_applicability_of_filter(self):
         time.sleep(5)
         prod_list = []
-        for product in self.PRODUCT_ANCHORS:
-            prod_list.append(self.get_element_text(product))
+        flag = len(self.PRODUCT_ANCHORS)>0
+        return flag
 
-        for product in prod_list:
-            if "Haldiram" not in product:
-                return False
-            else:
-                return True
+    def select_product(self):
+        self.do_click(self.PRODUCT_ANCHORS[1])
 
 

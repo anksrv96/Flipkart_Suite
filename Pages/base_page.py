@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import logging
 
 """This class is the parent of all pages"""
 """Generic methods and utilities"""
@@ -9,6 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 class BasePage:
 
     def __init__(self, driver):
+        self.logger = logging.getLogger(__name__)
         self.driver = driver
 
     def do_click(self, by_locator):
@@ -28,3 +30,18 @@ class BasePage:
     def get_title(self, title):
         WebDriverWait(self.driver, 10).until(EC.title_is(title))
         return self.driver.title
+
+    def log_info(self, message):
+        self.logger.info(message)
+
+    def log_debug(self, message):
+        self.logger.debug(message)
+
+    def log_warning(self, message):
+        self.logger.warning(message)
+
+    def log_error(self, message):
+        self.logger.error(message)
+
+    def log_critical(self, message):
+        self.logger.critical(message)

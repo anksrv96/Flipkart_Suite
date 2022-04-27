@@ -25,18 +25,22 @@ class LoginPage(BasePage):
 
     """Page Actions"""
     def get_visibility_of_username(self):
+        self.log_info("Validating username field")
         return self.is_visible(self.USERNAME)
 
     def get_visibility_of_password(self):
+        self.log_info("Validating password field")
         return self.is_visible(self.PASSWORD)
 
     def get_visibility_of_login_button(self):
+        self.log_info("Validating login button")
         return self.is_visible(self.LOGIN_BUTTON)
 
     def perform_login_(self, username, password):
         self.do_send_keys(self.USERNAME, username)
         self.do_send_keys(self.PASSWORD, password)
         self.do_click(self.LOGIN_BUTTON)
+        self.log_info("PERFORMING LOGIN")
         return HomePage(self.driver)
 
     def get_visibility_of_header(self, header_text):

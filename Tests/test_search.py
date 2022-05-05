@@ -9,6 +9,7 @@ class TestSearch(BaseTest):
     def test_search_page_landing(self):
         self.login_page = LoginPage(self.driver)
         home_page = self.login_page.perform_login_(TestData.USERNAME, TestData.PASSWORD)
+        time.sleep(2)
         home_page.populate_search_bar(TestData.SEARCH_QUERY)
         search_page = home_page.click_search_button()
         time.sleep(2)
@@ -17,6 +18,7 @@ class TestSearch(BaseTest):
     def test_visibility_of_search_results(self):
         self.login_page = LoginPage(self.driver)
         home_page = self.login_page.perform_login_(TestData.USERNAME, TestData.PASSWORD)
+        time.sleep(2)
         home_page.populate_search_bar(TestData.SEARCH_QUERY)
         search_page = home_page.click_search_button()
         time.sleep(2)
